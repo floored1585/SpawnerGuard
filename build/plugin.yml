@@ -1,0 +1,6 @@
+name: SpawnerGuard
+version: 0.1.2
+description: Prevent unwanted spawner activity
+author: floored1585
+load: startup
+main: net.f85.SpawnerGuard.SpawnerGuard
