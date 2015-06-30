@@ -2,7 +2,7 @@
 A simple plugin for disabling spawners of specific entities.
 
 ## Requirements
-This plugin is built against the [Spigot](http://www.spigotmc.org) MineCraft server.  Your mileage may vary with other servers.
+This plugin is built against the [Spigot](http://www.spigotmc.org) Minecraft server.  Your mileage may vary with other servers.
 
 To install, simply place the JAR in your plugins folder.
 
