@@ -6,4 +6,4 @@ invalid_creatures: [ "ENDERMAN", "ENDERMITE", "GHAST", "GUARDIAN",
 reset_invalid_spawners: true
 spawner_reset_creatures: [ "ZOMBIE", "SPIDER" ]
 spawner_modification_allowed: false
-warning_text: [ "You are not allowed to modify spawners" ]
+warning_text: "You are not allowed to modify spawners"
