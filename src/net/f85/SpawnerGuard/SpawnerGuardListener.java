@@ -35,6 +35,12 @@ public class SpawnerGuardListener implements Listener {
   public void onCreatureSpawn(CreatureSpawnEvent e) {
     LivingEntity en = e.getEntity();
     EntityType type = e.getEntityType();
+    Location loc = en.getLocation();
+
+    // Return without doing anything if we're in a whitelisted world
+    if (SpawnerGuard.config.getList("creative_worlds").contains(loc.getWorld().getName())) {
+      return;
+    }
 
     // If entity was created by a spawner
     if (e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.SPAWNER)) {
@@ -44,11 +50,14 @@ public class SpawnerGuardListener implements Listener {
         // Cancel the spawn!
         e.setCancelled(true);
         SpawnerGuard.log.warning(type.toString() + " generation by spawner prevented near " +
-            en.getLocation().getBlockX() + "," +
-            en.getLocation().getBlockY() + "," +
-            en.getLocation().getBlockZ() +
-            " in world: " + en.getLocation().getWorld().getName());
-        plugin.changeBadSpawner(en.getLocation(), type);
+            loc.getBlockX() + "," +
+            loc.getBlockY() + "," +
+            loc.getBlockZ() +
+            " in world: " + loc.getWorld().getName());
+        // Reset the spawner if that option is enabled
+        if (SpawnerGuard.config.getBoolean("reset_invalid_spawners")) {
+          plugin.changeBadSpawner(en.getLocation(), type);
+        }
       }
     }
   }
@@ -65,6 +74,12 @@ public class SpawnerGuardListener implements Listener {
     Action action = e.getAction();
     Block clickedBlock = e.getClickedBlock();
     Player player = e.getPlayer();
+    Location loc = player.getLocation();
+
+    // Return without doing anything if we're in a whitelisted world
+    if (SpawnerGuard.config.getList("creative_worlds").contains(loc.getWorld().getName())) {
+      return;
+    }
 
     if ((inHand == Material.MONSTER_EGG || inHand == Material.MONSTER_EGGS) && action == Action.RIGHT_CLICK_BLOCK) {
       if (clickedBlock.getType() == Material.MOB_SPAWNER) {

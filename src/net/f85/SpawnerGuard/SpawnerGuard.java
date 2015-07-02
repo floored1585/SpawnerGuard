@@ -12,7 +12,9 @@ import org.bukkit.block.*;
 import org.bukkit.entity.*;
 import org.bukkit.plugin.java.*;
 import org.bukkit.configuration.file.*;
+import java.util.List;
 import java.util.logging.*;
+import java.util.Random;
 
 public class SpawnerGuard extends JavaPlugin {
 
@@ -55,7 +57,9 @@ public class SpawnerGuard extends JavaPlugin {
       CreatureSpawner spawner = (CreatureSpawner)b;
       if (config.getList("invalid_creatures").contains(spawner.getSpawnedType().toString())) {
         // We have a bad spawner, change it!
-        spawner.setSpawnedType(EntityType.ZOMBIE);
+        List<String> list = (List<String>)config.getList("spawner_reset_creatures");
+        String newType = list.get(new Random().nextInt(list.size()));
+        spawner.setSpawnedType(EntityType.valueOf(newType));
       }
     }
   }

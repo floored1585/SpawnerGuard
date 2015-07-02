@@ -1,3 +1,9 @@
-invalid_creatures: [ "VILLAGER" ]
+creative_worlds: []
+invalid_creatures: [ "ENDERMAN", "ENDERMITE", "GHAST", "GUARDIAN",
+        "MAGMA_CUBE", "SILVERFISH", "SLIME", "WITCH", "PIG_ZOMBIE",
+        "BAT", "CHICKEN", "COW", "HORSE", "MUSHROOM_COW", "OCELOT",
+        "PIG", "RABBIT", "SHEEP", "SQUID", "WOLF", "VILLAGER" ]
+reset_invalid_spawners: true
+spawner_reset_creatures: [ "ZOMBIE", "SPIDER" ]
 spawner_modification_allowed: false
 warning_text: [ "You are not allowed to modify spawners" ]
