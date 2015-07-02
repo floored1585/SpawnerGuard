@@ -1,5 +1,5 @@
 name: SpawnerGuard
-version: 0.1.2
+version: 1.0
 description: Prevent unwanted spawner activity
 author: floored1585
 load: startup

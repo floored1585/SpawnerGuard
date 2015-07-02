@@ -1,1 +1,3 @@
 invalid_creatures: [ "VILLAGER" ]
+spawner_modification_allowed: false
+warning_text: [ "You are not allowed to modify spawners" ]

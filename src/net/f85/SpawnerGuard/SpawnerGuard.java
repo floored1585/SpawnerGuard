@@ -7,7 +7,9 @@
 package net.f85.SpawnerGuard;
 
 import net.f85.SpawnerGuard.*;
-import org.bukkit.Bukkit;
+import org.bukkit.*;
+import org.bukkit.block.*;
+import org.bukkit.entity.*;
 import org.bukkit.plugin.java.*;
 import org.bukkit.configuration.file.*;
 import java.util.logging.*;
@@ -41,6 +43,21 @@ public class SpawnerGuard extends JavaPlugin {
   @Override
   public void onDisable() {
     getLogger().info("Successfully deactivated SpawnerGuard");
+  }
+
+
+  public void changeBadSpawner(Location loc, EntityType type) {
+    for (BlockState b : loc.getChunk().getTileEntities()) {
+      // Skip to next iteration if this isn't a spawner
+      if (b.getType() != Material.MOB_SPAWNER) {
+        continue;
+      }
+      CreatureSpawner spawner = (CreatureSpawner)b;
+      if (config.getList("invalid_creatures").contains(spawner.getSpawnedType().toString())) {
+        // We have a bad spawner, change it!
+        spawner.setSpawnedType(EntityType.ZOMBIE);
+      }
+    }
   }
 
 
