@@ -11,6 +11,7 @@ To install, simply place the JAR in your plugins folder.
 * invalid_creatures (List of Strings): A list of creatures that should not be allowed to spawn from spawners.
 * reset_invalid_spawners (Boolean): Whether or not invalid spawners, when detected, should be converted to one of the types in spawner_reset_creatures.
 * spawner_reset_creatures: (List of Strings): A list of valid spawner types, used when converting an invalid spawner.
+* blaze_world_name: (String): The world name where it should be OK for blazes to spawn.  Any other spawners in this world will be changed to Blaze spawners if reset_invalid_spawners is true.
 * spawner_modification_allowed: (Boolean): Whether or not players can change spawners with monster eggs.
 * warning_text (String): The message sent to a player when they are prevented from changing a spawner with a monster egg.
 

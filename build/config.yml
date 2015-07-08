@@ -5,5 +5,6 @@ invalid_creatures: [ "ENDERMAN", "ENDERMITE", "GHAST", "GUARDIAN",
         "PIG", "RABBIT", "SHEEP", "SQUID", "WOLF", "VILLAGER" ]
 reset_invalid_spawners: true
 spawner_reset_creatures: [ "ZOMBIE", "SPIDER" ]
+blaze_world_name: "world_nether"
 spawner_modification_allowed: false
 warning_text: "You are not allowed to modify spawners"

@@ -37,16 +37,19 @@ public class SpawnerGuardListener implements Listener {
     EntityType type = e.getEntityType();
     Location loc = en.getLocation();
 
-    // Return without doing anything if we're in a whitelisted world
-    if (SpawnerGuard.config.getList("creative_worlds").contains(loc.getWorld().getName())) {
-      return;
+    // Return without doing anything if we're in a whitelisted world, or if it's a blaze spawner
+    // in the configured blaze world
+    if (SpawnerGuard.config.getList("creative_worlds").contains(loc.getWorld().getName()) ||
+      (SpawnerGuard.config.getString("blaze_world_name").equals(loc.getWorld().getName()) &&
+       type == EntityType.BLAZE)) {
+        return;
     }
 
     // If entity was created by a spawner
     if (e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.SPAWNER)) {
 
       // If the entity is on our invalid creature list (it isn't allowed to come from a spawner)
-      if (SpawnerGuard.config.getList("invalid_creatures").contains(type.toString())) {
+      if (SpawnerGuard.config.getList("invalid_creatures").contains(type.toString()) || SpawnerGuard.config.getString("blaze_world_name").equals(loc.getWorld().getName())) {
         // Cancel the spawn!
         e.setCancelled(true);
         SpawnerGuard.log.warning(type.toString() + " generation by spawner prevented near " +

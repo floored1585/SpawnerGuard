@@ -60,6 +60,10 @@ public class SpawnerGuard extends JavaPlugin {
         List<String> list = (List<String>)config.getList("spawner_reset_creatures");
         String newType = list.get(new Random().nextInt(list.size()));
         spawner.setSpawnedType(EntityType.valueOf(newType));
+      } else if (SpawnerGuard.config.getString("blaze_world_name").equals(loc.getWorld().getName())) {
+        // We need to change it to a blaze spawner
+        spawner.setSpawnedType(EntityType.BLAZE);
+        SpawnerGuard.log.warning(type.toString() + " spawner changed to BLAZE");
       }
     }
   }
